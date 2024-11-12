@@ -1,6 +1,7 @@
 ### Commands sequence
 
 docker build -t sauringalaxy/sample-rest-api:latest .
+
 docker push sauringalaxy/sample-rest-api:latest
 
 
