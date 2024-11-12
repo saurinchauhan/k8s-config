@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-rest-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-rest-api
+  template:
+    metadata:
+      labels:
+        app: sample-rest-api
+    spec:
+      containers:
+      - name: sample-rest-api
+        image: sauringalaxy/sample-rest-api:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-rest-api
+spec:
+  selector:
+    app: sample-rest-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
